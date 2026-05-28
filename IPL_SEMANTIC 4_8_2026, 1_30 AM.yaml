@@ -1,0 +1,561 @@
+name: IPL_SEMANTIC
+tables:
+  - name: BALL_BY_BALL
+    description: The table contains ball-by-ball records of cricket match events across multiple seasons. Each record captures a single delivery, including the players involved (batter, bowler, and fielders), the teams batting and bowling, and the outcome of the delivery such as runs scored, extras, and dismissals.
+    base_table:
+      database: DEMO_DB
+      schema: PUBLIC
+      table: BALL_BY_BALL
+    dimensions:
+      - name: BALL_NUMBER
+        description: The sequential number of each ball bowled within an over in a cricket match.
+        expr: BALL_NUMBER
+        data_type: NUMBER
+        sample_values:
+          - '5'
+          - '3'
+          - '4'
+      - name: BATSMAN_TYPE
+        description: The batting hand orientation of the batsman.
+        expr: BATSMAN_TYPE
+        data_type: VARCHAR
+        sample_values:
+          - Left hand Bat
+          - Right hand Bat
+      - name: BATTER
+        description: The name of the batter who faced the delivery.
+        expr: BATTER
+        data_type: VARCHAR
+        sample_values:
+          - ML Hayden
+          - VVS Laxman
+          - AC Gilchrist
+      - name: BATTER_RUNS
+        description: The number of runs scored by the batter on a given ball delivery.
+        expr: BATTER_RUNS
+        data_type: NUMBER
+        sample_values:
+          - '0'
+          - '4'
+          - '1'
+      - name: BOWLER
+        description: The name of the bowler involved in the delivery.
+        expr: BOWLER
+        data_type: VARCHAR
+        sample_values:
+          - PP Chawla
+          - MM Patel
+          - ST Jayasuriya
+      - name: BOWLER_TYPE
+        description: The bowling style or technique used by the bowler.
+        expr: BOWLER_TYPE
+        data_type: VARCHAR
+        sample_values:
+          - Slow Left arm Orthodox
+          - Left arm Medium fast
+          - Left arm Fast medium
+      - name: BYE_RUNS
+        description: Runs scored as bye extras in a cricket match where the ball passes the batsman without being hit and the wicketkeeper fails to collect it.
+        expr: BYE_RUNS
+        data_type: NUMBER
+        sample_values:
+          - '1'
+          - '2'
+          - '0'
+      - name: EXTRAS
+        description: The number of extra runs conceded in a cricket delivery.
+        expr: EXTRAS
+        data_type: NUMBER
+        sample_values:
+          - '4'
+          - '0'
+          - '1'
+      - name: FIELDERS_INVOLVED
+        description: The names of fielders involved in a ball event during a cricket match.
+        expr: FIELDERS_INVOLVED
+        data_type: VARCHAR
+        sample_values:
+          - 'NULL'
+          - '[null]'
+          - '["B Lee"]'
+      - name: INNINGS
+        description: The inning number within a cricket match.
+        expr: INNINGS
+        data_type: NUMBER
+        sample_values:
+          - '3'
+          - '2'
+          - '1'
+      - name: IS_BYE
+        description: Indicates whether the delivery resulted in a bye.
+        expr: IS_BYE
+        data_type: BOOLEAN
+        sample_values:
+          - 'FALSE'
+          - 'TRUE'
+      - name: IS_LEG_BYE
+        description: Indicates whether the delivery resulted in leg bye extras being awarded to the batting team.
+        expr: IS_LEG_BYE
+        data_type: BOOLEAN
+        sample_values:
+          - 'FALSE'
+          - 'TRUE'
+      - name: IS_NO_BALL
+        description: Indicates whether the delivery bowled was a no-ball.
+        expr: IS_NO_BALL
+        data_type: BOOLEAN
+        sample_values:
+          - 'TRUE'
+          - 'FALSE'
+      - name: IS_PENALTY
+        description: Indicates whether the delivery bowled was a penalty ball.
+        expr: IS_PENALTY
+        data_type: BOOLEAN
+        sample_values:
+          - 'FALSE'
+          - 'TRUE'
+      - name: IS_SUPER_OVER
+        description: Indicates whether the delivery was bowled as part of a super over.
+        expr: IS_SUPER_OVER
+        data_type: BOOLEAN
+        sample_values:
+          - 'FALSE'
+          - 'TRUE'
+      - name: IS_WICKET
+        description: Indicates whether a wicket fell on a given ball during a cricket match.
+        expr: IS_WICKET
+        data_type: BOOLEAN
+        sample_values:
+          - 'FALSE'
+          - 'TRUE'
+      - name: IS_WIDE_BALL
+        description: Indicates whether the delivery bowled was a wide ball.
+        expr: IS_WIDE_BALL
+        data_type: BOOLEAN
+        sample_values:
+          - 'FALSE'
+          - 'TRUE'
+      - name: LEG_BYE_RUNS
+        description: The number of leg bye runs scored on a given delivery in a cricket match.
+        expr: LEG_BYE_RUNS
+        data_type: NUMBER
+        sample_values:
+          - '1'
+          - '4'
+          - '0'
+      - name: MATCH_ID
+        description: Unique identifier for a cricket match.
+        expr: MATCH_ID
+        data_type: NUMBER
+        sample_values:
+          - '335996'
+          - '335994'
+          - '335995'
+      - name: NO_BALL_RUNS
+        description: The number of runs scored from a no-ball delivery in a cricket match.
+        expr: NO_BALL_RUNS
+        data_type: NUMBER
+        sample_values:
+          - '2'
+          - '5'
+          - '0'
+      - name: NON_STRIKER
+        description: The name of the batsman who is at the non-striker's end during a delivery in a cricket match.
+        expr: NON_STRIKER
+        data_type: VARCHAR
+        sample_values:
+          - P Kumar
+          - AC Gilchrist
+          - Mohammad Hafeez
+      - name: OVER_NUMBER
+        description: The sequential number identifying each over bowled within a cricket match.
+        expr: OVER_NUMBER
+        data_type: NUMBER
+        sample_values:
+          - '0'
+          - '1'
+          - '2'
+      - name: PENALTY_RUNS
+        description: The number of penalty runs awarded during a ball in a cricket match.
+        expr: PENALTY_RUNS
+        data_type: NUMBER
+        sample_values:
+          - '5'
+          - '0'
+      - name: PLAYER_OUT
+        description: The name of the player who was dismissed on a given ball.
+        expr: PLAYER_OUT
+        data_type: VARCHAR
+        sample_values:
+          - Shoaib Malik
+          - 'NULL'
+          - V Sehwag
+      - name: SEASON_ID
+        description: The year-based identifier representing the cricket season in which the ball-by-ball event occurred.
+        expr: SEASON_ID
+        data_type: NUMBER
+        sample_values:
+          - '2008'
+          - '2009'
+          - '2010'
+      - name: TEAM_BATTING
+        description: The name of the team that is batting during a given ball in a cricket match.
+        expr: TEAM_BATTING
+        data_type: VARCHAR
+        sample_values:
+          - Delhi Capitals
+          - Punjab Kings
+          - Sunrisers Hyderabad
+      - name: TEAM_BOWLING
+        description: The name of the team that is bowling during a ball-by-ball cricket match event.
+        expr: TEAM_BOWLING
+        data_type: VARCHAR
+        sample_values:
+          - Punjab Kings
+          - Mumbai Indians
+          - Delhi Capitals
+      - name: TOTAL_RUNS
+        description: The total number of runs scored on a given ball delivery.
+        expr: TOTAL_RUNS
+        data_type: NUMBER
+        sample_values:
+          - '4'
+          - '1'
+          - '0'
+      - name: WICKET_KIND
+        description: The method by which a batsman was dismissed on a given delivery.
+        expr: WICKET_KIND
+        data_type: VARCHAR
+        sample_values:
+          - caught
+          - lbw
+          - 'NULL'
+      - name: WIDE_BALL_RUNS
+        description: The number of runs scored from wide ball deliveries in a cricket match.
+        expr: WIDE_BALL_RUNS
+        data_type: NUMBER
+        sample_values:
+          - '1'
+          - '2'
+          - '0'
+  - name: IPL_MATCH
+    description: The table contains records of cricket matches from the Indian Premier League (IPL). Each record represents a single match and includes details about the teams, venue, season, and match format, as well as toss and outcome information such as the winning team and margin of victory.
+    base_table:
+      database: DEMO_DB
+      schema: PUBLIC
+      table: IPL_MATCH
+    dimensions:
+      - name: BALLS_PER_OVER
+        description: The number of balls bowled per over in an Indian Premier League match.
+        expr: BALLS_PER_OVER
+        data_type: NUMBER
+        sample_values:
+          - '6'
+      - name: CITY
+        description: The city where the match was played.
+        expr: CITY
+        data_type: VARCHAR
+        sample_values:
+          - Hyderabad
+          - Bangalore
+          - Pune
+      - name: EVENT_NAME
+        description: The name of the sporting event.
+        expr: EVENT_NAME
+        data_type: VARCHAR
+        sample_values:
+          - Indian Premier League
+      - name: FORMAT
+        description: The format or style of the match played in the Indian Premier League.
+        expr: FORMAT
+        data_type: VARCHAR
+        sample_values:
+          - T20
+      - name: GENDER
+        description: The gender of the participants involved in the match.
+        expr: GENDER
+        data_type: VARCHAR
+        sample_values:
+          - male
+      - name: MATCH_DATE
+        description: The date on which the Indian Premier League match was played.
+        expr: MATCH_DATE
+        data_type: VARCHAR
+        sample_values:
+          - 06-04-2017
+          - 05-04-2017
+          - 02-05-2017
+      - name: MATCH_ID
+        description: Unique identifier assigned to each cricket match in the Indian Premier League.
+        expr: MATCH_ID
+        data_type: NUMBER
+        sample_values:
+          - '1216506'
+          - '1178397'
+          - '1181764'
+      - name: MATCH_NUMBER
+        description: The sequential number assigned to each match in the Indian Premier League (IPL).
+        expr: MATCH_NUMBER
+        data_type: VARCHAR
+        sample_values:
+          - '2'
+          - '8'
+          - '3'
+      - name: MATCH_TYPE
+        description: The type or stage of the match within the Indian Premier League tournament.
+        expr: MATCH_TYPE
+        data_type: VARCHAR
+        sample_values:
+          - Qualifier 1
+          - Eliminator
+          - league match
+      - name: MATCH_WINNER
+        description: The name of the team that won the Indian Premier League match.
+        expr: MATCH_WINNER
+        data_type: VARCHAR
+        sample_values:
+          - Sunrisers Hyderabad
+          - Rising Pune Supergiant
+          - Kolkata Knight Riders
+      - name: OVERS
+        description: The number of overs bowled in an Indian Premier League match.
+        expr: OVERS
+        data_type: NUMBER
+        sample_values:
+          - '20'
+      - name: PLAYER_OF_MATCH
+        description: Identifier for the player awarded the Player of the Match title in an Indian Premier League match.
+        expr: PLAYER_OF_MATCH
+        data_type: VARCHAR
+        sample_values:
+          - '46'
+          - '1833'
+          - '32'
+      - name: RESULT
+        description: The outcome or result of an Indian Premier League match.
+        expr: RESULT
+        data_type: VARCHAR
+        sample_values:
+          - win
+          - tie
+          - no result
+      - name: SEASON
+        description: The season or year in which the Indian Premier League match was played.
+        expr: SEASON
+        data_type: VARCHAR
+        sample_values:
+          - '2008'
+          - '2018'
+          - '2017'
+      - name: SEASON_ID
+        description: The season identifier for the Indian Premier League (IPL) match.
+        expr: SEASON_ID
+        data_type: NUMBER
+        sample_values:
+          - '2017'
+          - '2008'
+          - '2018'
+      - name: STAGE
+        description: The stage or phase of the Indian Premier League match within the tournament structure.
+        expr: STAGE
+        data_type: VARCHAR
+        sample_values:
+          - Qualifier 2
+          - Eliminator
+      - name: TEAM_TYPE
+        description: The type or category of a team participating in an Indian Premier League match.
+        expr: TEAM_TYPE
+        data_type: VARCHAR
+        sample_values:
+          - club
+      - name: TEAM1
+        description: The name of the first team participating in an Indian Premier League match.
+        expr: TEAM1
+        data_type: VARCHAR
+        sample_values:
+          - Royal Challengers Bangalore
+          - Rising Pune Supergiant
+          - Sunrisers Hyderabad
+      - name: TEAM2
+        description: The name of the second team participating in an Indian Premier League match.
+        expr: TEAM2
+        data_type: VARCHAR
+        sample_values:
+          - Kolkata Knight Riders
+          - Mumbai Indians
+          - Royal Challengers Bangalore
+      - name: TOSS_DECISION
+        description: The decision made by the team that won the toss in an Indian Premier League match indicating whether they chose to field or bat first.
+        expr: TOSS_DECISION
+        data_type: VARCHAR
+        sample_values:
+          - bat
+          - field
+      - name: TOSS_WINNER
+        description: The name of the team that won the toss in an Indian Premier League match.
+        expr: TOSS_WINNER
+        data_type: VARCHAR
+        sample_values:
+          - Kolkata Knight Riders
+          - Rising Pune Supergiant
+          - Royal Challengers Bangalore
+      - name: VENUE
+        description: The name of the cricket stadium or venue where the match was played.
+        expr: VENUE
+        data_type: VARCHAR
+        sample_values:
+          - Rajiv Gandhi International Stadium, Uppal
+          - Maharashtra Cricket Association Stadium
+          - MA Chidambaram Stadium, Chepauk, Chennai
+      - name: WIN_BY_RUNS
+        description: The margin of victory in an Indian Premier League match measured in runs.
+        expr: WIN_BY_RUNS
+        data_type: VARCHAR
+        sample_values:
+          - 'NULL'
+          - '30'
+          - '140'
+      - name: WIN_BY_WICKETS
+        description: The number of wickets by which a team won a match in the Indian Premier League.
+        expr: WIN_BY_WICKETS
+        data_type: VARCHAR
+        sample_values:
+          - '10'
+          - '7'
+          - 'NULL'
+    primary_key:
+      columns:
+        - MATCH_ID
+  - name: PLAYER_INFO
+    description: The table contains records of cricket players and their playing characteristics. Each record represents an individual player and includes details about their identity, batting and bowling styles, and fielding position.
+    base_table:
+      database: DEMO_DB
+      schema: PUBLIC
+      table: PLAYER_INFO
+    dimensions:
+      - name: BAT_STYLE
+        description: The batting style of a player indicating which hand they use to bat.
+        expr: BAT_STYLE
+        data_type: VARCHAR
+        sample_values:
+          - Right hand Bat
+          - Left hand Bat
+      - name: BOWL_STYLE
+        description: The bowling style of a cricket player including their dominant arm and pace category.
+        expr: BOWL_STYLE
+        data_type: VARCHAR
+        sample_values:
+          - Left arm Medium fast
+          - Left arm Medium
+          - Right arm Fast
+      - name: FIELD_POS
+        description: The fielding position of a cricket player.
+        expr: FIELD_POS
+        data_type: VARCHAR
+        sample_values:
+          - Wicketkeeper
+          - 'NULL'
+      - name: PLAYER_FULL_NAME
+        description: The full name of a cricket player.
+        expr: PLAYER_FULL_NAME
+        data_type: VARCHAR
+        sample_values:
+          - Sayed Iqbal Abdulla
+          - Mohsin Khan
+          - Rashid Khan Arman
+      - name: PLAYER_ID
+        description: Unique numerical identifier assigned to each player.
+        expr: PLAYER_ID
+        data_type: NUMBER
+        sample_values:
+          - '45'
+          - '12323'
+          - '8333'
+      - name: PLAYER_IMAGE
+        description: URLs linking to images of players.
+        expr: PLAYER_IMAGE
+        data_type: VARCHAR
+        sample_values:
+          - https://www.espncricinfo.com/cricketers/abhinav-manohar-778963
+          - https://documents.iplt20.com/ipl/IPLHeadshot2025/218.png
+      - name: PLAYER_NAME
+        description: The full name of a cricket player.
+        expr: PLAYER_NAME
+        data_type: VARCHAR
+        sample_values:
+          - R Vinay Kumar
+          - JJ Roy
+          - DL Chahar
+      - name: PLAYER_NAME2
+        description: The full name of a player.
+        expr: PLAYER_NAME2
+        data_type: VARCHAR
+        sample_values:
+          - Mitchell John
+          - Tejas Baroka
+          - Taruwar Sushil
+    unique_keys:
+      - columns:
+          - PLAYER_ID
+  - name: TEAMS
+    description: The table contains records of teams, including their names and associated imagery. Each record represents a single team with identifying and display-related details.
+    base_table:
+      database: DEMO_DB
+      schema: PUBLIC
+      table: TEAMS
+    dimensions:
+      - name: IMAGE_URL
+        description: URLs pointing to team logo or outline images.
+        expr: IMAGE_URL
+        data_type: VARCHAR
+        sample_values:
+          - https://documents.iplt20.com/ipl/MI/Logos/Logooutline/MIoutline.png
+          - https://documents.iplt20.com/ipl/SRH/Logos/Logooutline/SRHoutline.png
+          - https://documents.iplt20.com/ipl/RCB/Logos/Logooutline/RCBoutline.png
+      - name: TEAM_ID
+        description: Unique identifier assigned to each team.
+        expr: TEAM_ID
+        data_type: NUMBER
+        sample_values:
+          - '1'
+          - '3'
+          - '2'
+      - name: TEAM_NAME
+        description: The name of a sports team.
+        expr: TEAM_NAME
+        data_type: VARCHAR
+        sample_values:
+          - Sunrisers Hyderabad
+          - Pune Warriors
+          - Mumbai Indians
+      - name: TEAM_NAME_SHORT
+        description: Short name or abbreviation representing a team.
+        expr: TEAM_NAME_SHORT
+        data_type: VARCHAR
+        sample_values:
+          - RCB
+          - SRH
+          - RPS
+    unique_keys:
+      - columns:
+          - TEAM_NAME
+relationships:
+  - name: IPL_MATCH_TO_PLAYER_INFO
+    left_table: IPL_MATCH
+    relationship_columns:
+      - left_column: PLAYER_OF_MATCH
+        right_column: PLAYER_ID
+    right_table: PLAYER_INFO
+  - name: BALL_BY_BALL_TO_IPL_MATCH
+    left_table: BALL_BY_BALL
+    relationship_columns:
+      - left_column: MATCH_ID
+        right_column: MATCH_ID
+    right_table: IPL_MATCH
+module_custom_instructions:
+  question_categorization: |-
+    1. Final Match is the last match of the season, the winner of the last match of a season is the champion and cup holder of that season
+
+    2. cup winner is last match winner of the season, not most match won team
+
+    3. For deep analysis of a match use the table ball_by_ball it gives each ball of each match commentry
